@@ -25,10 +25,10 @@ renderCats();
 async function renderCats() {
   try {
     loader.hidden = false;
-    selectListCats.hidden = true;
     const cats = await fetchBreeds();
     renderCatsInSelect(cats);
   } catch (error) {
+    loader.hidden = true;
     errorMassage.hidden = false;
     console.log(error);
   }
@@ -42,7 +42,6 @@ function renderCatsInSelect(catsArr) {
     })
     .join('');
   selectListCats.innerHTML = markup;
-  selectListCats.hidden = false;
   loader.hidden = true;
 }
 
