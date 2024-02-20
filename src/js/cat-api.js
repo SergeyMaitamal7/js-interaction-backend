@@ -7,6 +7,7 @@ const urlOneCat = 'https://api.thecatapi.com/v1/images/search?breed_ids=';
 
 async function fetchBreeds() {
   const response = await axios.get(url);
+  console.log(response.data);
   return response.data;
 }
 

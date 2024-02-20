@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
 import {
+  divBox,
   catFoto,
   catName,
   catTemperament,
@@ -13,8 +14,13 @@ const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const errorMassage = document.querySelector('.error');
 
-selectListCats.addEventListener('click', renderOneCat());
+selectListCats.addEventListener('change', () => {
+  catInfo.innerHTML = '';
+  renderOneCat();
+});
+
 errorMassage.hidden = true;
+
 renderCats();
 async function renderCats() {
   try {
@@ -37,19 +43,21 @@ function renderCatsInSelect(catsArr) {
     .join('');
   selectListCats.innerHTML = markup;
   selectListCats.hidden = false;
-  renderOneCat();
+  loader.hidden = true;
 }
 
 async function renderOneCat() {
   if (selectListCats.value) {
     loader.hidden = false;
     catInfo.hidden = true;
+
     const cat = await fetchCatByBreed(selectListCats.value);
+
     catInfo.append(catFoto(cat));
     catInfo.append(catName(cat));
+    catInfo.append(catInformation(cat));
     catInfo.append(span());
     catInfo.append(catTemperament(cat));
-    catInfo.append(catInformation(cat));
     loader.hidden = true;
     catInfo.hidden = false;
   }

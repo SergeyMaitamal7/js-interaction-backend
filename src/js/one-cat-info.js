@@ -1,3 +1,8 @@
+function divBox() {
+  const div = document.createElement('div');
+  return div;
+}
+
 function catFoto(cat) {
   const catFoto = document.createElement('img');
   catFoto.src = cat[0].url;
@@ -29,4 +34,4 @@ function catInformation(cat) {
   return catInformation;
 }
 
-export { catFoto, catName, catTemperament, catInformation, span };
+export { divBox, catFoto, catName, catTemperament, catInformation, span };
