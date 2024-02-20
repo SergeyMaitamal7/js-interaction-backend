@@ -23,3 +23,12 @@ span {
   font-size: 24;
   font-weight: 700;
 }
+
+.cat-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.box {
+  margin: 10px;
+}

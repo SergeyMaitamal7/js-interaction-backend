@@ -49,16 +49,17 @@ function renderCatsInSelect(catsArr) {
 async function renderOneCat() {
   if (selectListCats.value) {
     loader.hidden = false;
-    catInfo.hidden = true;
 
     const cat = await fetchCatByBreed(selectListCats.value);
-
+   
     catInfo.append(catFoto(cat));
-    catInfo.append(catName(cat));
-    catInfo.append(catInformation(cat));
-    catInfo.append(span());
-    catInfo.append(catTemperament(cat));
+    const div = divBox();
+    catInfo.append(div);
+    div.append(catName(cat));
+    div.append(catInformation(cat));
+    div.append(span());
+    div.append(catTemperament(cat));
+
     loader.hidden = true;
-    catInfo.hidden = false;
   }
 }
